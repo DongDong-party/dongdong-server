@@ -1,5 +1,6 @@
 package party.dongdong.domain;
 
+import com.sun.tools.corba.se.idl.StringGen;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -34,4 +35,23 @@ public class Store {
 
     @Column(columnDefinition = "boolean default false")
     private Boolean isRemoved;
+
+    //==생성 관련 메서드==/
+    public Store(String storeOwner, String description, String benefits, Address address) {
+        this.storeOwner = storeOwner;
+        this.description = description;
+        this.benefits = benefits;
+        this.address = address;
+    }
+
+    public static Store createStore(String storeOwner,
+                                    String description,
+                                    String benefits,
+                                    Address address) {
+        return new Store(storeOwner, description, benefits, address);
+    }
+
+    public void registerCategory(Category category) {
+        this.category = category;
+    }
 }
