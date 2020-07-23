@@ -3,10 +3,7 @@ package party.dongdong.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter
@@ -18,6 +15,10 @@ public class Store {
     private Long id;
 
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     private String storeOwner;
 
