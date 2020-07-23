@@ -1,6 +1,5 @@
 package party.dongdong.domain;
 
-import com.sun.tools.corba.se.idl.StringGen;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +11,8 @@ import java.time.LocalDateTime;
 @Entity
 public class Store {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
     private Long id;
 
