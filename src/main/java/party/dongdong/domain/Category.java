@@ -26,4 +26,8 @@ public class Category {
 
     @Column(columnDefinition = "boolean default false")
     private Boolean isRemoved;
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
