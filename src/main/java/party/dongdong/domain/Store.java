@@ -37,18 +37,20 @@ public class Store {
     private Boolean isRemoved;
 
     //==생성 관련 메서드==/
-    public Store(String storeOwner, String description, String benefits, Address address) {
+    public Store(String name, String storeOwner, String description, String benefits, Address address) {
+        this.name = name;
         this.storeOwner = storeOwner;
         this.description = description;
         this.benefits = benefits;
         this.address = address;
     }
 
-    public static Store createStore(String storeOwner,
+    public static Store createStore(String name,
+                                    String storeOwner,
                                     String description,
                                     String benefits,
                                     Address address) {
-        return new Store(storeOwner, description, benefits, address);
+        return new Store(name, storeOwner, description, benefits, address);
     }
 
     public void registerCategory(Category category) {

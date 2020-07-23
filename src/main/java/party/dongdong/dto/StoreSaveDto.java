@@ -12,6 +12,7 @@ import party.dongdong.domain.Store;
 public class StoreSaveDto {
 
     private Long categoryId;
+    private String name;
     private String storeOwner;
     private String description;
     private String benefits;
@@ -22,6 +23,6 @@ public class StoreSaveDto {
 
     public Store toEntity() {
         Address address = new Address(metropolitan, city, gu);
-        return Store.createStore(storeOwner, description, benefits, address);
+        return Store.createStore(name, storeOwner, description, benefits, address);
     }
 }
