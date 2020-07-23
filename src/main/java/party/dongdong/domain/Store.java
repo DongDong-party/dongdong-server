@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Getter
@@ -26,5 +27,8 @@ public class Store {
 
     private String benefits;
 
+    private LocalDateTime created;
+
+    @Column(columnDefinition = "boolean default false")
     private Boolean isRemoved;
 }
