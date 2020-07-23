@@ -6,7 +6,6 @@ import lombok.Setter;
 import party.dongdong.domain.Address;
 import party.dongdong.domain.Store;
 
-
 @AllArgsConstructor
 @Getter
 @Setter
