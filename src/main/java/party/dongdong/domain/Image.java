@@ -2,10 +2,7 @@ package party.dongdong.domain;
 
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,4 +16,9 @@ public class Image {
     private String url;
 
     private LocalDateTime created;
+
+    @PrePersist
+    public void prePersist() {
+        if (this.created == null) this.created = LocalDateTime.now();
+    }
 }

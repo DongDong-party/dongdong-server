@@ -33,7 +33,7 @@ public class Store {
 
     private LocalDateTime created;
 
-    @Column(columnDefinition = "boolean default false")
+    @Column(columnDefinition = "boolean default false", nullable = false)
     private Boolean isRemoved;
 
     //==생성 관련 메서드==/
@@ -55,5 +55,11 @@ public class Store {
 
     public void registerCategory(Category category) {
         this.category = category;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (this.isRemoved == null) this.isRemoved = false;
+        if (this.created == null) this.created = LocalDateTime.now();
     }
 }

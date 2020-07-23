@@ -31,4 +31,10 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    @PrePersist
+    public void prePersist() {
+        if (this.isRemoved == null) this.isRemoved = false;
+        if (this.created == null) this.created = LocalDateTime.now();
+    }
 }
