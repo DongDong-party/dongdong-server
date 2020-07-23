@@ -27,6 +27,9 @@ public class Store {
 
     private String benefits;
 
+    @Embedded
+    private Address address;
+
     private LocalDateTime created;
 
     @Column(columnDefinition = "boolean default false")
