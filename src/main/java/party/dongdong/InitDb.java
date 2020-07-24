@@ -27,9 +27,12 @@ public class InitDb {
         private final EntityManager em;
 
         public void init() {
-            Category category = new Category();
-            category.setName("맛집");
-            em.persist(category);
+            Category category1 = new Category();
+            Category category2 = new Category();
+            category1.setName("맛집");
+            category2.setName("카페");
+            em.persist(category1);
+            em.persist(category2);
         }
 
     }
