@@ -17,12 +17,13 @@ public class StoreSaveDto {
     private String description;
     private String benefits;
 
-    private String metropolitan;
+    private String bigCity;
     private String city;
-    private String gu;
+    private String town;
+    private String detailAddress;
 
     public Store toEntity() {
-        Address address = new Address(metropolitan, city, gu);
+        Address address = new Address(bigCity, city, town, detailAddress);
         return Store.createStore(name, storeOwner, description, benefits, address);
     }
 }

@@ -11,7 +11,8 @@ import javax.persistence.Embeddable;
 @Getter
 @Embeddable
 public class Address {
-    private String metropolitan;
+    private String bigCity;
     private String city;
-    private String gu;
+    private String town;
+    private String detail;
 }

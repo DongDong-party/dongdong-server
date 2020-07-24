@@ -40,7 +40,8 @@ public class StoreServiceTest {
                 "할인10%!",
                 "서울",
                 "용산구",
-                "12345");
+                "무슨동",
+                "서울시 용산구 무슨동 어쩌구 건물");
         Long storeId = storeService.register(saveDto);
 
         //then
@@ -48,7 +49,7 @@ public class StoreServiceTest {
 
         assertEquals("짱짱맛집", store.getName());
         assertEquals("정원", store.getStoreOwner());
-        assertEquals("서울", store.getAddress().getMetropolitan());
+        assertEquals("서울", store.getAddress().getBigCity());
     }
 
 }

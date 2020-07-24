@@ -6,10 +6,10 @@ buildscript {
 
 plugins {
 	id 'org.springframework.boot' version '2.1.9.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 }
 
-apply plugin: 'io.spring.dependency-management'
 apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
 group = 'party.dongdong'
@@ -34,11 +34,20 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	test {
+		useJUnitPlatform {
+			includeEngines 'junit-vintage'
+		}
+	}
 
 	implementation 'com.querydsl:querydsl-jpa'
 	implementation 'com.querydsl:querydsl-apt'
 
+}
+
+test {
+	useJUnitPlatform()
 }
 
 def querydslDir = "src/main/generated"
