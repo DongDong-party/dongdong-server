@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+import party.dongdong.domain.Address;
 import party.dongdong.domain.Category;
 import party.dongdong.domain.Store;
+import party.dongdong.dto.StoreListDto;
 import party.dongdong.dto.StoreSaveDto;
 import party.dongdong.repository.StoreRepository;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -50,6 +54,33 @@ public class StoreServiceTest {
         assertEquals("짱짱맛집", store.getName());
         assertEquals("정원", store.getStoreOwner());
         assertEquals("서울", store.getAddress().getBigCity());
+    }
+
+    @Test
+    public void storeListTest() {
+        //when
+        Category category = new Category();
+        category.setName("맛집");
+        em.persist(category);
+
+        Address address = new Address("서울시", "용산구", "청파로", "52");
+        Store store = Store.createStore(
+                "맛집",
+                "정원",
+                "짱짱맛집",
+                "혜택",
+                address);
+        store.registerCategory(category);
+        em.persist(store);
+        em.flush();
+
+        //given
+        List<StoreListDto> storeList = storeService.findAllDesc();
+
+        //then
+        assertEquals(store.getId(), storeList.get(0).getStoreId());
+        assertEquals(store.getName(), storeList.get(0).getName());
+        assertEquals("서울시", storeList.get(0).getAddress().getBigCity());
     }
 
 }
