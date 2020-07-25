@@ -4,6 +4,10 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  servelet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
 
   jpa:
     hibernate:
@@ -15,3 +19,6 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+
+file:
+  upload: '/Users/garden/Desktop/dongdong/server/src/main/resources/upload/image' # 로컬 개발용
