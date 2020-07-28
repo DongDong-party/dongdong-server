@@ -21,4 +21,11 @@ public class Image {
     public void prePersist() {
         if (this.created == null) this.created = LocalDateTime.now();
     }
+
+    public static Image createImage(String url) {
+        Image image = new Image();
+        image.url = url;
+
+        return image;
+    }
 }
