@@ -19,4 +19,11 @@ public class StoreImage {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
     private Image image;
+
+    public static StoreImage createStoreImage(Store store, Image image){
+        StoreImage storeImage = new StoreImage();
+        storeImage.store = store;
+        storeImage.image = image;
+        return storeImage;
+    }
 }
