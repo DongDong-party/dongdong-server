@@ -1,3 +1,6 @@
+file:
+  upload: '/Users/garden/Desktop/dongdong/server/src/main/resources/upload/image/' # 로컬 개발용
+
 logging:
   level:
     org.hibernate.SQL: debug

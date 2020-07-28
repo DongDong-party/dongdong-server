@@ -6,6 +6,8 @@ import lombok.Setter;
 import party.dongdong.domain.Address;
 import party.dongdong.domain.Store;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -21,6 +23,8 @@ public class StoreSaveDto {
     private String city;
     private String town;
     private String detailAddress;
+
+    private List<Long> imageIds;
 
     public Store toEntity() {
         Address address = new Address(bigCity, city, town, detailAddress);

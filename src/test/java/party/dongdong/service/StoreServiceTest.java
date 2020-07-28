@@ -15,6 +15,7 @@ import party.dongdong.repository.StoreRepository;
 
 import javax.persistence.EntityManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -45,7 +46,8 @@ public class StoreServiceTest {
                 "서울",
                 "용산구",
                 "무슨동",
-                "서울시 용산구 무슨동 어쩌구 건물");
+                "서울시 용산구 무슨동 어쩌구 건물",
+                new ArrayList<>());
         Long storeId = storeService.register(saveDto);
 
         //then
