@@ -21,4 +21,4 @@ logging:
     org.hibernate.SQL: debug
 
 file:
-  upload: '/Users/garden/Desktop/dongdong/server/src/main/resources/upload/image' # 로컬 개발용
+  upload: '/Users/garden/Desktop/dongdong/server/src/main/resources/upload/image/' # 로컬 개발용
