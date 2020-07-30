@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -30,6 +31,9 @@ public class Store {
 
     @Embedded
     private Address address;
+
+    @OneToMany(mappedBy = "store")
+    private List<StoreImage> images;
 
     private LocalDateTime created;
 

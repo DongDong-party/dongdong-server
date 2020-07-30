@@ -3,8 +3,11 @@ package party.dongdong.dto;
 import lombok.Getter;
 import lombok.Setter;
 import party.dongdong.domain.Address;
+import party.dongdong.domain.Store;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -17,16 +20,18 @@ public class StoreListDto {
     private String description;
     private String benefits;
     private Address address;
+    private List<String> images;
     private LocalDateTime created;
 
-    public StoreListDto(Long storeId, String category, String name, String storeOwner, String description, String benefits, Address address, LocalDateTime created) {
-        this.storeId = storeId;
-        this.category = category;
-        this.name = name;
-        this.storeOwner = storeOwner;
-        this.description = description;
-        this.benefits = benefits;
-        this.address = address;
-        this.created = created;
+    public StoreListDto(Store store) {
+        this.storeId = store.getId();
+        this.category = store.getCategory().getName();
+        this.name = store.getName();
+        this.storeOwner = store.getStoreOwner();
+        this.description = store.getDescription();
+        this.benefits = store.getBenefits();
+        this.address = store.getAddress();
+        this.images = store.getImages().stream().map(i -> i.getImage().getUrl()).collect(Collectors.toList());
+        this.created = store.getCreated();
     }
 }

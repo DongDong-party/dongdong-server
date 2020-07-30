@@ -4,8 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
-import party.dongdong.domain.QStore;
-import party.dongdong.domain.Store;
+import party.dongdong.domain.*;
 import party.dongdong.dto.StoreListDto;
 
 
@@ -21,20 +20,17 @@ public class StoreQueryRepository extends QuerydslRepositorySupport {
         this.query = query;
     }
 
-    public List<StoreListDto> findAllDesc() {
+    public List<Store> findAllDesc() {
         QStore store = QStore.store;
-        return query.select(
-                Projections.constructor(StoreListDto.class,
-                        store.id,
-                        store.category.name,
-                        store.name,
-                        store.storeOwner,
-                        store.description,
-                        store.benefits,
-                        store.address,
-                        store.created))
-                .from(store)
-                .orderBy(store.id.desc())
-                .fetch();
+        QStoreImage storeImage = QStoreImage.storeImage;
+
+        List<Store> stores = query.select(store)
+                                .from(store)
+                                .leftJoin(store.images, storeImage)
+                                .fetchJoin()
+                                .distinct()
+                                .fetch();
+
+        return stores;
     }
 }

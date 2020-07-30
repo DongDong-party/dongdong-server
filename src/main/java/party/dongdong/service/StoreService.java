@@ -13,6 +13,7 @@ import party.dongdong.repository.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -44,6 +45,9 @@ public class StoreService {
     }
 
     public List<StoreListDto> findAllDesc() {
-        return storeQueryRepository.findAllDesc();
+        List<Store> stores = storeQueryRepository.findAllDesc();
+
+        List<StoreListDto> result = stores.stream().map(StoreListDto::new).collect(Collectors.toList());
+        return result;
     }
 }
