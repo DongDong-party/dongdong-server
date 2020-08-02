@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -33,7 +34,7 @@ public class Store {
     private Address address;
 
     @OneToMany(mappedBy = "store")
-    private List<StoreImage> images;
+    private List<StoreImage> images = new ArrayList<>();
 
     private LocalDateTime created;
 
