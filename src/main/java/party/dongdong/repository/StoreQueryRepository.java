@@ -36,6 +36,7 @@ public class StoreQueryRepository extends QuerydslRepositorySupport {
                                 .leftJoin(storeImage.image)
                                 .fetchJoin()
                                 .distinct()
+                                .orderBy(store.id.desc())
                                 .fetch();
 
         return stores;
