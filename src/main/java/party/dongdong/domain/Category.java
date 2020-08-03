@@ -30,13 +30,17 @@ public class Category {
 
     private int customOrder;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @PrePersist
     public void prePersist() {
         if (this.isRemoved == null) this.isRemoved = false;
         if (this.created == null) this.created = LocalDateTime.now();
+    }
+
+    //======테스트용 메소드======//
+    public void setNameForTest(String name) {
+        this.name = name;
+    }
+    public void setCustomOrderForTest(int order) {
+        this.customOrder = order;
     }
 }

@@ -33,7 +33,7 @@ public class StoreServiceTest {
     public void storeRegisterTest() {
         //when
         Category category = new Category();
-        category.setName("맛집");
+        category.setNameForTest("맛집");
         em.persist(category);
 
         //given
@@ -62,7 +62,7 @@ public class StoreServiceTest {
     public void storeListTest() {
         //when
         Category category = new Category();
-        category.setName("맛집");
+        category.setNameForTest("맛집");
         em.persist(category);
 
         Address address = new Address("서울시", "용산구", "청파로", "52");
