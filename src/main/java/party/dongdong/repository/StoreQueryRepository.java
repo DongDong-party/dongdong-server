@@ -58,7 +58,8 @@ public class StoreQueryRepository extends QuerydslRepositorySupport {
                 .leftJoin(storeImage.image)
                 .fetchJoin()
                 .distinct()
-                .where(categoryIdEq(requestDto.getCategoryId()))
+                .where(categoryIdEq(requestDto.getCategoryId()),
+                        keywordContains(requestDto.getKeyword()))
                 .orderBy(store.id.desc())
                 .fetch();
         return stores;
@@ -69,5 +70,16 @@ public class StoreQueryRepository extends QuerydslRepositorySupport {
             return null;
         }
         return QStore.store.category.id.eq(categoryId);
+    }
+
+    private BooleanExpression keywordContains(String keyword) {
+        if (keyword == null) {
+            return null;
+        }
+
+        BooleanExpression byName = QStore.store.name.contains(keyword);
+        BooleanExpression byDescription = QStore.store.description.contains(keyword);
+
+        return byName.or(byDescription);
     }
 }
