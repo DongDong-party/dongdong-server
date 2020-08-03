@@ -7,6 +7,7 @@ import party.dongdong.domain.Category;
 import party.dongdong.domain.Image;
 import party.dongdong.domain.Store;
 import party.dongdong.domain.StoreImage;
+import party.dongdong.dto.PageRequest;
 import party.dongdong.dto.StoreListDto;
 import party.dongdong.dto.StoreSaveDto;
 import party.dongdong.dto.StoreSearchRequestDto;
@@ -45,8 +46,8 @@ public class StoreService {
         return store.getId();
     }
 
-    public List<StoreListDto> findAllDesc() {
-        List<Store> stores = storeQueryRepository.findAllDesc();
+    public List<StoreListDto> findAllDesc(PageRequest page) {
+        List<Store> stores = storeQueryRepository.findAllDesc(page);
 
         List<StoreListDto> result = stores.stream().map(StoreListDto::new).collect(Collectors.toList());
         return result;

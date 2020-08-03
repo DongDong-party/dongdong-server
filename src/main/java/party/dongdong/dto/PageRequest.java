@@ -7,8 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class StoreSearchRequestDto {
-    private String keyword;
-    private Long categoryId;
+public class PageRequest {
     private Integer cursor;
 }
