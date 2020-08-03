@@ -17,7 +17,7 @@ public class StoreListDto {
     private String category;
     private String name;
     private String storeOwner;
-    private String description;
+    private String shortDescription;
     private String benefits;
     private Address address;
     private List<String> images;
@@ -28,7 +28,7 @@ public class StoreListDto {
         this.category = store.getCategory().getName();
         this.name = store.getName();
         this.storeOwner = store.getStoreOwner();
-        this.description = store.getDescription();
+        this.shortDescription = store.getShortDescription();
         this.benefits = store.getBenefits();
         this.address = store.getAddress();
         this.images = store.getImages().stream().map(i -> i.getImage().getUrl()).collect(Collectors.toList());

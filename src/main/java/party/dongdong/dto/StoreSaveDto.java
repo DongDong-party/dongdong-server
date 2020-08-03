@@ -16,6 +16,7 @@ public class StoreSaveDto {
     private Long categoryId;
     private String name;
     private String storeOwner;
+    private String shortDescription;
     private String description;
     private String benefits;
 
@@ -28,6 +29,6 @@ public class StoreSaveDto {
 
     public Store toEntity() {
         Address address = new Address(bigCity, city, town, detailAddress);
-        return Store.createStore(name, storeOwner, description, benefits, address);
+        return Store.createStore(name, storeOwner, shortDescription, description, benefits, address);
     }
 }
