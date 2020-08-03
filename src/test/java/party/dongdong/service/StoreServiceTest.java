@@ -42,6 +42,7 @@ public class StoreServiceTest {
                 "짱짱맛집",
                 "정원",
                 "돈까스가 맛있는집",
+                "여기 진짜진짜 맛있어요",
                 "할인10%!",
                 "서울",
                 "용산구",
@@ -69,6 +70,7 @@ public class StoreServiceTest {
         Store store = Store.createStore(
                 "맛집",
                 "정원",
+                "여기 진짜진짜 맛있어요",
                 "짱짱맛집",
                 "혜택",
                 address);
