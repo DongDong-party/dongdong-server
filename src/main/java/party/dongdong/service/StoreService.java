@@ -9,6 +9,7 @@ import party.dongdong.domain.Store;
 import party.dongdong.domain.StoreImage;
 import party.dongdong.dto.StoreListDto;
 import party.dongdong.dto.StoreSaveDto;
+import party.dongdong.dto.StoreSearchRequestDto;
 import party.dongdong.repository.*;
 
 import javax.persistence.EntityNotFoundException;
@@ -48,6 +49,12 @@ public class StoreService {
         List<Store> stores = storeQueryRepository.findAllDesc();
 
         List<StoreListDto> result = stores.stream().map(StoreListDto::new).collect(Collectors.toList());
+        return result;
+    }
+
+    public List<StoreListDto> search(StoreSearchRequestDto requestDto) {
+        List<Store> findStores = storeQueryRepository.search(requestDto);
+        List<StoreListDto> result = findStores.stream().map(StoreListDto::new).collect(Collectors.toList());
         return result;
     }
 }

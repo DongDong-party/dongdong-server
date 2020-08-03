@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import party.dongdong.domain.Store;
 import party.dongdong.dto.StoreListDto;
 import party.dongdong.dto.StoreSaveDto;
+import party.dongdong.dto.StoreSearchRequestDto;
 import party.dongdong.service.StoreService;
 
 import java.util.List;
@@ -26,5 +27,10 @@ public class StoreApiController {
     @GetMapping("/api/v1/store")
     public List<StoreListDto> findAllDesc() {
         return storeService.findAllDesc();
+    }
+
+    @GetMapping("/api/v1/store/search")
+    public List<StoreListDto> search(StoreSearchRequestDto requestDto) {
+        return storeService.search(requestDto);
     }
 }

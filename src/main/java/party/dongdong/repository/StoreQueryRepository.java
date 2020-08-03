@@ -1,5 +1,6 @@
 package party.dongdong.repository;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,7 @@ import party.dongdong.domain.Store;
 import party.dongdong.domain.QCategory;
 import party.dongdong.domain.QStore;
 import party.dongdong.domain.QStoreImage;
+import party.dongdong.dto.StoreSearchRequestDto;
 
 
 import java.util.List;
@@ -40,5 +42,32 @@ public class StoreQueryRepository extends QuerydslRepositorySupport {
                                 .fetch();
 
         return stores;
+    }
+
+    public List<Store> search(StoreSearchRequestDto requestDto) {
+        QStore store = QStore.store;
+        QStoreImage storeImage = QStoreImage.storeImage;
+        QCategory category = QCategory.category;
+
+        List<Store> stores = query.select(store)
+                .from(store)
+                .innerJoin(store.category, category)
+                .fetchJoin()
+                .leftJoin(store.images, storeImage)
+                .fetchJoin()
+                .leftJoin(storeImage.image)
+                .fetchJoin()
+                .distinct()
+                .where(categoryIdEq(requestDto.getCategoryId()))
+                .orderBy(store.id.desc())
+                .fetch();
+        return stores;
+    }
+
+    private BooleanExpression categoryIdEq(Long categoryId) {
+        if (categoryId == null) {
+            return null;
+        }
+        return QStore.store.category.id.eq(categoryId);
     }
 }
