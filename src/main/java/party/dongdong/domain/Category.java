@@ -28,6 +28,8 @@ public class Category {
     @Column(columnDefinition = "boolean default false")
     private Boolean isRemoved;
 
+    private int customOrder;
+
     public void setName(String name) {
         this.name = name;
     }
