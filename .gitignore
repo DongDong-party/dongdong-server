@@ -39,3 +39,4 @@ src/main/resources/upload
 
 src/main/resources/application-db.yml
 src/main/resources/application-file.yml
+src/main/resources/application-aws.yml

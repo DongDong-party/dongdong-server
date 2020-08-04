@@ -3,6 +3,7 @@ spring:
     include:
       - db
       - file
+      - aws
 
   servelet:
     multipart:
@@ -19,3 +20,10 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+
+cloud:
+  aws:
+    s3:
+      bucket: dongdong-party
+    region:
+      static: ap-northeast-2
