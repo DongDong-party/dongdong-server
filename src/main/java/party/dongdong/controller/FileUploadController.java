@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import party.dongdong.domain.Image;
+import party.dongdong.modules.S3Uploader;
 import party.dongdong.repository.ImageRepository;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -26,6 +26,7 @@ public class FileUploadController {
     private String uploadDir;
 
     private final ImageRepository imageRepository;
+    private final S3Uploader s3Uploader;
 
     @PostMapping("/uploadImages")
     public List<Long> save(HttpServletRequest request,
@@ -35,8 +36,8 @@ public class FileUploadController {
             for (MultipartFile file : files) {
                 String uuid = UUID.randomUUID().toString();
                 String fileName = uuid + StringUtils.cleanPath(file.getOriginalFilename());
-                File fileObject = new File(uploadDir + fileName);
-                file.transferTo(fileObject);
+                s3Uploader.upload(file, "userImage", uploadDir, fileName);
+
 
                 images.add(imageRepository.save(Image.createImage(fileName)).getId());
             }
