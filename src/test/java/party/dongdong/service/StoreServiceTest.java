@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import party.dongdong.domain.Address;
 import party.dongdong.domain.Category;
 import party.dongdong.domain.Store;
+import party.dongdong.dto.PageRequest;
 import party.dongdong.dto.StoreListDto;
 import party.dongdong.dto.StoreSaveDto;
 import party.dongdong.repository.StoreRepository;
@@ -79,7 +80,7 @@ public class StoreServiceTest {
         em.flush();
 
         //given
-        List<StoreListDto> storeList = storeService.findAllDesc();
+        List<StoreListDto> storeList = storeService.findAllDesc(new PageRequest(100));
 
         //then
         assertEquals(store.getId(), storeList.get(0).getStoreId());
