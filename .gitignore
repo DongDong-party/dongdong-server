@@ -36,3 +36,6 @@ out/
 ### add ###
 src/main/generated
 src/main/resources/upload
+
+src/main/resources/application-db.yml
+src/main/resources/application-file.yml

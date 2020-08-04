@@ -2,6 +2,7 @@ package party.dongdong.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
+@PropertySource("classpath:application-file.yml")
 @RestController
 public class FileUploadController {
 
