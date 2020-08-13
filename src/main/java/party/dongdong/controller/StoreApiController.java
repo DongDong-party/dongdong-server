@@ -2,7 +2,6 @@ package party.dongdong.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import party.dongdong.domain.Store;
 import party.dongdong.dto.PageRequest;
 import party.dongdong.dto.StoreListDto;
 import party.dongdong.dto.StoreSaveDto;
