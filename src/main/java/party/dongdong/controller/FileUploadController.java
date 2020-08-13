@@ -11,8 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import party.dongdong.domain.Image;
 import party.dongdong.modules.S3Uploader;
 import party.dongdong.repository.ImageRepository;
+import party.dongdong.validator.ImageValidator;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -27,11 +27,14 @@ public class FileUploadController {
 
     private final ImageRepository imageRepository;
     private final S3Uploader s3Uploader;
+    private final ImageValidator imageValidator;
 
     @PostMapping("/uploadImages")
-    public List<Long> save(HttpServletRequest request,
-                           @RequestPart List<MultipartFile> files){
+    public List<Long> save(@RequestPart List<MultipartFile> files){
         List<Long> images = new ArrayList<>();
+
+        imageValidator.extensionValid(files);
+
         try {
             for (MultipartFile file : files) {
                 String uuid = UUID.randomUUID().toString();
