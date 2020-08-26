@@ -5,10 +5,11 @@ spring:
       - file
       - aws
 
-  servelet:
+  servlet:
     multipart:
       enabled: true
-      max-file-size: 200MB
+      maxFileSize: 50MB
+      maxRequestSize: 50MB
 
   jpa:
     hibernate:
