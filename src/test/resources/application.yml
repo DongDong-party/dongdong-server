@@ -5,3 +5,13 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
+
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+
+spring:
+  profiles:
+    include:
+      - aws
